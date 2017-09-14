@@ -1,2 +1,0 @@
-# LearningReact
-Learning React
