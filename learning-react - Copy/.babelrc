@@ -1,0 +1,20 @@
+{
+  "presets": [
+    ["es2015", { "modules": false }],
+    "stage-0",
+    "env",
+    "react",
+    "flow"
+  ],
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  },
+  "plugins": [
+    "transform-es2015-arrow-functions",
+    "check-es2015-constants",
+    "transform-es2015-block-scoping",
+    "transform-class-properties"
+  ]
+}
