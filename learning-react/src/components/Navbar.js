@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import NavbarItem from './NavbarItem.js';
+import { Row, Col, Nav } from "reactstrap";
 
 type Props = {
     title: string,
@@ -21,31 +22,26 @@ class NavicationBar extends Component<Props, State> {
         };
     }
 
-    createRoute = (key, route, text) => (
-        <li key={key} className="nav-item">
-            <NavLink className="nav-link" to={route}>
-                {text}
-            </NavLink>
-        </li>
-    );
-
-    createRoutes = () =>
-        this.state.routes.map((item, index) => {
-            return this.createRoute(index, item.to, item.text);
-    });
+    createRoutes = () => {
+        return this.state.routes.map((item, index) => {
+            return <NavbarItem key={index} to={item.to} text={item.text} />
+        });
+    }
 
     render() {
         return (
-            <div className="header clearfix">
-                <nav>
-                    <ul className="nav nav-pills float-right">{this.createRoutes()}</ul>
-                </nav>
-                <h3 className="text-muted">{this.state.title}</h3>
-            </div>
+            <Row>
+                <Col sm="4">
+                    <h3 className="text-muted">{this.state.title}</h3>
+                </Col>
+                <Col sm="8">
+                    <Nav>
+                        {this.createRoutes()}
+                    </Nav>
+                </Col>
+            </Row>
         );
     }
 }
-
-
 
 export default NavicationBar;

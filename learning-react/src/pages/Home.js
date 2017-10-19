@@ -1,28 +1,25 @@
-// @flow
 import React, { Component } from 'react';
 import Jumbotron from '../components/Jumbotron.js';
 import SubHeading from '../components/SubHeading.js';
+import Footer from '../components/Footer.js';
+import { Row, Col } from 'reactstrap';
 
 const subHeadings = [
     {
         heading: "The fist sub heading",
-        text:
-            "The very first paragraph!"
+        text: "The very first paragraph!"
     },
     {
         heading: "The second sub heading",
-        text:
-            "The second paragraph."
+        text: "The second paragraph."
     },
     {
         heading: "The third sub heading",
-        text:
-            "The third paragraph."
+        text: "The third paragraph."
     },
     {
         heading: "The fourth sub heading",
-        text:
-            "Donec id elit non mi porta gravida at eget."
+        text: "Donec id elit non mi porta gravida at eget."
     },
     {
         heading: "The fifth sub heading",
@@ -46,13 +43,15 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <Jumbotron heading={"Jumbotron great success!"} isHomePage={true} text={"This must be the greatest component to hit all of the world! Hello everyone I am going to make React great again. Starting with Jumbotron."}/>
-                <div className="row marketing">
-                    {this.getSubHeadings()}
-                </div>
-                <footer className="footer">
-                    <p>COMPRSA 2017</p>
-                </footer>
+                <Row>
+                    <Col>
+                        <Jumbotron heading={"Jumbotron great success!"} isHomePage={true} text={"This must be the greatest component to hit all of the world! Hello everyone I am going to make React great again. Starting with Jumbotron."}/>
+                        <Row>
+                            {this.getSubHeadings()}
+                        </Row>
+                    </Col>
+                </Row>
+                <Footer></Footer>
             </div>
         );
     }

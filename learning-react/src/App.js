@@ -8,6 +8,9 @@ import Secure from './pages/Secure.js';
 import Home from './pages/Home.js';
 import GitHubViewer from './pages/GitHubViewer.js';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { Container, Row, Col } from 'reactstrap';
+
+import "./css/bootstrap.css";
 
 const routes = [
     { 'to': '/', 'text': 'Home'},
@@ -56,35 +59,42 @@ class App extends Component {
 
     render() {
         return (
-            <Router>
-                <div className="container">
-                    <NavicationBar title={"Learning React"} routes={routes} />
-                    <Route exact path="/" component={Home} />
-                    <Route path="/githubviewer" component={GitHubViewer} />
-                    <Route path="/about" component={AboutUs} />
-                    <Route path="/contact" component={ContactUs} />
-                    <Route
-                        path="/signIn"
-                        render={props => (
-                            <SignIn
-                                logIn={this.logIn}
-                                isLoggedIn={this.state.isLoggedIn} 
-                            />
-                        )}
-                    />
-                    <Route
-                        path="/secure"
-                        render={props =>
-                            this.state.isLoggedIn === true ?
-                            <Secure
-                                {...props}
-                                logOut={this.logOut}
-                                authResponse={this.state.authResponse}/>:
-                            <Redirect to={{ pathname: "/signIn" }} />
-                        }
-                    />
-                </div>
-            </Router>
+            <Container>
+                <Row>
+                    <Col>
+                        <Router>
+                            <div>
+                                <NavicationBar title={"Learning React"} routes={routes} />
+                                <hr />
+                                <Route exact path="/" component={Home} />
+                                <Route path="/githubviewer" component={GitHubViewer} />
+                                <Route path="/about" component={AboutUs} />
+                                <Route path="/contact" component={ContactUs} />
+                                <Route
+                                    path="/signIn"
+                                    render={props => (
+                                        <SignIn
+                                            logIn={this.logIn}
+                                            isLoggedIn={this.state.isLoggedIn} 
+                                        />
+                                    )}
+                                />
+                                <Route
+                                    path="/secure"
+                                    render={props =>
+                                        this.state.isLoggedIn === true ?
+                                        <Secure
+                                            {...props}
+                                            logOut={this.logOut}
+                                            authResponse={this.state.authResponse}/>:
+                                        <Redirect to={{ pathname: "/signIn" }} />
+                                    }
+                                />
+                            </div>
+                        </Router>
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 }
