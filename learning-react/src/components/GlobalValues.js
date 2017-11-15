@@ -1,5 +1,5 @@
 import React from 'react';
-import { values as valuesDecorator } from 'redux-form'
+import { values as valuesDecorator } from 'redux-form';
 
 const GlobalValues = ({ form, format = values => JSON.stringify(values, null, 2) }) => {
     const decorator = valuesDecorator({ form })

@@ -1,27 +1,26 @@
 import React from 'react';
 import Jumbotron from '../components/Jumbotron.js';
-import submit from '../validators/submit.js'
+import submit from '../validators/submit.js';
 import { Field, reduxForm } from 'redux-form'
 
 const renderField = ({
         input,
         label,
         type,
-        meta: { touched, error, warning }
+        meta: { touched, error }
 }) => (
     <div>
         <label>{label}</label>
         <div>
             <input className="form-control" {...input} placeholder={label} type={type} />
             {
-                touched && ((error && <span>{error}</span>) ||
-                (warning && <span>{warning}</span>))
+                touched && (error && <span>{error}</span>)
             }
         </div>
     </div>
 )
 
-const Form = props => {
+let ReduxForm = props => {
     const { handleSubmit, submitting } = props
     return (
         <div>
@@ -43,6 +42,8 @@ const Form = props => {
     );
 }
 
-export default reduxForm({
+ReduxForm = reduxForm({
     form: 'formState'
-})(Form);
+})(ReduxForm);
+
+export default ReduxForm
